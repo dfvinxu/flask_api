@@ -25,7 +25,7 @@ def retrain():
     model = Lasso(alpha=6000)
     model.fit(X_train, y_train)
 
-    pickle.dump(model, open('ad_model.pkl', 'wb'))
+    pickle.dump(model, open('/home/vinxu/flask_api/ad_model.pkl', 'wb'))
 
     mse = mean_squared_error(y_test, model.predict(X_test))
     rmse = np.sqrt(mean_squared_error(y_test, model.predict(X_test)))
