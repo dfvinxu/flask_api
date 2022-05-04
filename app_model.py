@@ -7,7 +7,7 @@ os.chdir(os.path.dirname(__file__))
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-model = pickle.load(open('ad_model','rb'))
+model = pickle.load(open('ad_model.pkl','rb'))
 
 @app.route('/api/v1/predict', methods=['GET'])
 def predict():
