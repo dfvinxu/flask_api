@@ -14,7 +14,7 @@ app.config['DEBUG'] = True
 
 data = pd.read_csv('/home/vinxu/flask_api/data/Advertising.csv', index_col=0)
 
-@app.route('/api/v1/retrain', methods=['PUT'])
+@app.route('/api/v1/retrain', methods=['GET'])
 def retrain():
 
     X_train, X_test, y_train, y_test = train_test_split(data.drop(columns=['sales']),
@@ -30,4 +30,4 @@ def retrain():
     mse = mean_squared_error(y_test, model.predict(X_test))
     rmse = np.sqrt(mean_squared_error(y_test, model.predict(X_test)))
 
-    return "MSE es " + str(mse) + " RMSE es " + str(rmse)
+    return {'MSE':mse,'RMSE':rmse}
